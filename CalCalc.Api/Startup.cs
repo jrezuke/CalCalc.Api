@@ -26,6 +26,13 @@ namespace CalCalc.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(opt =>
+                {
+                    var origins = new string[] { "http://localhost:4200", "http://localhost:6702" };
+                    opt.AddPolicy("myPolicy", builder =>
+                    builder.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod());
+                });
+
             services.AddMvc();
             var connStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CalCalcDbContext>(
@@ -37,6 +44,7 @@ namespace CalCalc.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseCors("myPolicy");
             app.UseMvc();
         }
     }
