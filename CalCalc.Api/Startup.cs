@@ -33,19 +33,24 @@ namespace CalCalc.Api
                     builder.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod());
                 });
 
-            services.AddMvc();
             var connStr = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CalCalcDbContext>(
-                options => options.UseSqlServer(connStr, 
+                options => options.UseSqlServer(connStr,
                 b => b.MigrationsAssembly("CalCalc.Api"))
                 );
+
+            services.AddMvc( );
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseCors("myPolicy");
-            app.UseMvc();
+            app.UseMvc(config =>
+            {
+                //config.MapRoute("DefaultRoute", "api/{controller}/{action}");
+            });
         }
     }
 }

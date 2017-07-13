@@ -28,6 +28,12 @@ namespace CalCalc.Api.Controllers
             return _dbContext.Subject.ToList();
         }
 
+        [Route("GetBySite/{id}", Name = "GetBySite")]
+        public IEnumerable<Subject> GetBySite(int id)
+        {
+            return _dbContext.Subject.Where(s => s.SiteId == id).ToList();
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public JsonResult Get(int id)
