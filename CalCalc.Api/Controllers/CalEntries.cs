@@ -27,6 +27,12 @@ namespace CalCalc.Api.Controllers
             return _dbContext.CalEntry.ToList();
         }
 
+        [Route("GetBySubject/{id}", Name = "GetBySubject")]
+        public IEnumerable<CalEntry> GetBySubject(int id)
+        {
+            return _dbContext.CalEntry.Where(s => s.SubjectId == id).ToList();
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
