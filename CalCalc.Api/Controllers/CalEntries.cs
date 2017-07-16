@@ -35,9 +35,10 @@ namespace CalCalc.Api.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult Get(int id)
         {
-            return "value";
+            var entry = _dbContext.CalEntry.Where(c => c.Id == id).FirstOrDefault();
+            return Json(entry);
         }
 
         // POST api/values
@@ -58,14 +59,20 @@ namespace CalCalc.Api.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public JsonResult Put(int id, [FromBody]CalEntry entry)
         {
+            _dbContext.Entry(entry).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+            return Json(entry);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var entry = _dbContext.CalEntry.Where(c => c.Id == id).FirstOrDefault();
+            _dbContext.CalEntry.Remove(entry);
+            _dbContext.SaveChanges();
         }
     }
 }
