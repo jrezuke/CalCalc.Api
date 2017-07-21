@@ -26,6 +26,7 @@ namespace CalCalc.Api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseKestrel()
                 .UseStartup<Startup>()
                 .UseDefaultServiceProvider(options => //this is workaround for issues with ef core tooling 
                     options.ValidateScopes = false)
