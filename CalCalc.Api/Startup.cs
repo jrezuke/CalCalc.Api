@@ -28,7 +28,7 @@ namespace CalCalc.Api
         {
             services.AddCors(opt =>
                 {
-                    var origins = new string[] { "http://localhost:4200", "http://localhost:6702" };
+                    var origins = new string[] { "http://localhost:4200", "http://localhost:3500","http://localhost:6702" };
                     opt.AddPolicy("myPolicy", builder =>
                     builder.WithOrigins(origins).AllowAnyHeader().AllowAnyMethod());
                 });

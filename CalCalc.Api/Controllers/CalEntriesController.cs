@@ -11,11 +11,11 @@ using System.Linq;
 namespace CalCalc.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class CalEntries : Controller
+    public class CalEntriesController : Controller
     {
         private CalCalcDbContext _dbContext;
 
-        public CalEntries(CalCalcDbContext context)
+        public CalEntriesController(CalCalcDbContext context)
         {
             _dbContext = context;
         }
