@@ -1,6 +1,6 @@
 ﻿namespace CalCalc.Api.Models
 {
-    public class FluidInfusion
+    public class FluidInfusions
     {
         public int Id { get; set; }
         public int CalEntryId { get; set; }
