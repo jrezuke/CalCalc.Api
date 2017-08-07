@@ -24,6 +24,7 @@ namespace CalCalc.Api.Models
         public virtual DbSet<Parenteral> Parenteral { get; set; }
         public virtual DbSet<Site> Site { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
+        public virtual DbSet<Unit> Unit { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

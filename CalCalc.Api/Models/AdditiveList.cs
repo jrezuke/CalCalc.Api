@@ -16,7 +16,7 @@ namespace CalCalc.Api.Models
         public int? ProteinOfKcal { get; set; }
         public int? ChoOfKcal { get; set; }
         public int? LipidOfKcal { get; set; }
-        public int? Unit { get; set; }
+        public int? UnitId { get; set; }
 
         public ICollection<Additive> Additive { get; set; }
     }
