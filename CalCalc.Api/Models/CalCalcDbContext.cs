@@ -42,26 +42,7 @@ namespace CalCalc.Api.Models
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_Additive_Entry");
             });
-
-            modelBuilder.Entity<AdditiveList>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.ChoOfKcal).HasColumnName("CHO % of kcal");
-
-                entity.Property(e => e.KcalUnit)
-                    .HasColumnName("Kcal/unit")
-                    .HasColumnType("decimal");
-
-                entity.Property(e => e.LipidOfKcal).HasColumnName("Lipid % of kcal");
-
-                entity.Property(e => e.Manufacturer).HasMaxLength(255);
-
-                entity.Property(e => e.Name).HasMaxLength(255);
-
-                entity.Property(e => e.ProteinOfKcal).HasColumnName("Protein % of kcal");
-            });
-
+                        
             modelBuilder.Entity<CalEntry>(entity =>
             {
                 entity.Property(e => e.EntryDate).HasColumnType("datetime");
