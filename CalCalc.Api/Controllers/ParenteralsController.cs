@@ -24,6 +24,12 @@ namespace CalCalc.Api.Controllers
             return _dbContext.Parenteral.ToList();
         }
 
+        [Route("Entries/{id}", Name = "Entries")]
+        public IEnumerable<Parenteral> Entries(int id)
+        {
+            return _dbContext.Parenteral.Where(s => s.CalEntryId == id).ToList();
+        }
+
         [HttpPost]
         public JsonResult Post([FromBody]Parenteral parenteral)
         {
